@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/activity_vertical_margin">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/padding">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/blogTitleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_filled_primary_background"
-        android:backgroundTint="@color/primary_dark"
+        android:backgroundTint="@color/green"
         android:gravity="center"
-        android:padding="@dimen/activity_vertical_margin"
-        android:textColor="@color/primary"
+        android:padding="@dimen/padding"
+        tools:text="Row Text"
+        android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

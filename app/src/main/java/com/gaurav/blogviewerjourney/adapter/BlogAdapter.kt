@@ -1,21 +1,17 @@
 package com.gaurav.blogviewerjourney.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
-import com.gaurav.blogviewerjourney.BlogModel
 import com.gaurav.blogviewerjourney.R
+import com.gaurav.blogviewerjourney.io.model.BlogDetailModel
 
 class BlogAdapter(
-    val context: Context,
-    var list: List<BlogModel>,
+    private var list: List<BlogDetailModel>,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<BlogAdapter.ViewHolder>() {
-
-    private var mSectionPositions: ArrayList<Int>? = null
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var blogTitleTextView: AppCompatTextView = v.findViewById(R.id.blogTitleTextView)
@@ -31,10 +27,12 @@ class BlogAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val blogModel = list[position]
+        val blogDetailModel = list[position]
 
-        holder.blogTitleTextView.text = blogModel.title
-        holder.itemView.setOnClickListener { listener.onItemClick(blogModel) }
+        val blogTitle: String? = blogDetailModel.blogModel?.title
+        val userName: String? = blogDetailModel.userModel?.name
+        holder.blogTitleTextView.text = "Read \"$blogTitle\" by $userName"
+        holder.itemView.setOnClickListener { listener.onItemClick(blogDetailModel) }
     }
 
     override fun getItemCount(): Int {
@@ -42,6 +40,6 @@ class BlogAdapter(
     }
 
     interface OnItemClickListener {
-        fun onItemClick(blogModel: BlogModel)
+        fun onItemClick(blogDetailModel: BlogDetailModel)
     }
 }
